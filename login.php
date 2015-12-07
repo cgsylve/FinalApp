@@ -13,6 +13,27 @@ session_start();
 //  PRIMARY KEY (`email`)
 // ) 
 
+	function getApproved($email){
+		include("finalapp_hosted_dbconn.php");
+
+		$sql = "SELECT listid FROM approved WHERE email = '$email'";
+
+		$retval = mysql_query($sql, $conn)
+			or die ("Failed");
+
+		$approvedList = array();
+
+		if(mysql_num_rows($retval)){
+			while($row = mysql_fetch_assoc($retval)){
+				$approvedList[] = $row['listid']; 
+			}
+		}
+
+		$_SESSION['approvedList'] = $approvedList;
+
+		return $_SESSION['approvedList'];
+	}
+
 	function login($email, $pass){
 
 	include("finalapp_hosted_dbconn.php");
@@ -43,7 +64,7 @@ session_start();
 				}// end if
 
 				else{
-					$msg = "passed";
+					$msg = getApproved($email);
 					echo ($msg);
 				} //end else
 
@@ -112,6 +133,7 @@ session_start();
 
 		if($_POST['action'] == "login"){	
 			$email = $_POST['email'];
+			$_SESSION['email'] = $email; 
 			$pass = $_POST['pass'];		
 			login($email, $pass);
 
