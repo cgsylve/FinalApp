@@ -54,18 +54,32 @@
 
 				var list = $(this).closest("div");
 				var listId = list.attr("id");
-				alert(listId);
+				
+				var priority = listId + "-priority";
+				var itemPriority = $("#"+priority).val();
+				
+
+				var pos = 0;
+
+				if(itemPriority == "Low"){
+					pos = 3;
+				}
+				else if (itemPriority == "Med"){
+					pos = 2;
+				}			
+				else if (itemPriority == "High"){
+					pos = 1;
+				}	
 
 				var inputId = listId + "-input";
 				var itemName = $("#"+inputId).val();
-				alert(itemName);
-
+				
 				$.ajax({
 					url: 'addItem.php',
 					type: 'post',
-					data: {'action': 'addItem', 'itemName': itemName, 'listId': listId},
+					data: {'action': 'addItem', 'itemName': itemName, 'listId': listId, 'pos': pos, 'itemPriority': itemPriority},
 					success: function(data){
-						alert(data);
+						
 						location.reload();
 					},
 					error: function(xhr, desc, err){
@@ -79,28 +93,55 @@
 			$(".approveBtn").on("click", function(event){
 				event.preventDefault();
 
+				
+
 				var list = $(this).closest("div");
 				var listId = list.attr("id");
-				alert(listId);
+				
 
 				var inputName = listId + "-approve";
 				var userName = $("#"+inputName).val();
-				alert(userName);
+				
 
 				var name = $(this).closest("listbtn");
 				var listName = name.attr("id");
-				alert(listName)
+				
 
 				$.ajax({
 					url: 'approveUser.php',
 					type: 'post',
 					data: {'action': 'approve', 'user': userName, 'listId': listId, 'listName': listName},
 					success: function(data){
-						alert(data);
+						
 						location.reload();
 					},
 					error: function(xhr, desc, err){
 						alert("failed to add");
+					}
+
+				});
+
+			});
+
+			$(".deleteListBtn").on("click", function(event){
+				event.preventDefault();
+
+				
+
+				var list = $(this).closest("div");
+				var listId = list.attr("id");
+				
+
+				$.ajax({
+					url: 'deleteList.php',
+					type: 'post',
+					data: {'action': 'deleteList', 'listId': listId},
+					success: function(data){
+						
+						location.reload();
+					},
+					error: function(xhr, desc, err){
+						alert(err);
 					}
 
 				});
@@ -122,7 +163,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Project name</a>
+            <a class="navbar-brand" href="#">Listify</a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">

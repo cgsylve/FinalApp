@@ -33,7 +33,7 @@
                             $("#failApprovalAlert").toggleClass("show"); 
                         }
                         else{                          
-                            alert(data);
+                            
                             window.location.replace("HomePage.php");
                         }
                      }, // end success function
@@ -70,15 +70,14 @@
                     success: function(data){
                         if(data == "Failed"){
                             $("#failAlert").toggleClass("show");
-                            alert("Failed to enter");
-                        }
+                            
                         else if(data == "Success"){
                             $("#successAlert").toggleClass("show");
-                            alert("Success");
+                            
                         }
 
                         else {
-                            alert("Neither");
+                           
                         }
                     }, //end success
                     error: function(data){
