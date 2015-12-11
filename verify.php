@@ -1,5 +1,9 @@
 <?php
 	include("finalapp_hosted_dbconn.php");
+
+	/*
+		IMPORTANT - This code was taken from http://code.tutsplus.com/tutorials/how-to-implement-email-verification-for-new-members--net-3824 and modified for my own needs
+	*/
 	             
 	if(isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && !empty($_GET['hash'])){
 	    // Verify data
@@ -23,3 +27,24 @@
 	    echo '<div class="statusmsg">Invalid approach, please use the link that has been send to your email.</div>';
 	}
 ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap CSS CDN -->
+	
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> <!-- Bootstrap JS CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> <!-- jQuery 1.11 CDN -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		window.location.replace("http://calebsylvester.com/FinalApp/LoginPage.php");
+    	});
+    </script>
+
+</head>
+<body>
+</body>
+</html>

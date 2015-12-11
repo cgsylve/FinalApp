@@ -70,15 +70,14 @@
                     success: function(data){
                         if(data == "Failed"){
                             $("#failAlert").toggleClass("show");
+                        }
                             
                         else if(data == "Success"){
                             $("#successAlert").toggleClass("show");
                             
                         }
 
-                        else {
-                           
-                        }
+                        
                     }, //end success
                     error: function(data){
                         $("#failAlert").toggleClass("show");
@@ -87,7 +86,9 @@
                     
                 }); //end ajax
             }
+            
             });
+         
     }); 
     </script>
 
@@ -95,9 +96,13 @@
 
 <body>
 
+    <!-- IMPORTANT
+        While this code is original work, it is reused from our IT 354 Final Project
+    -->
+
 	<div class="container">
 
-	   <h2 id="title">Welcome to the shopping list tool</h2>
+	   <h2 id="title">Welcome to Listify</h2>
 	
 	
       <form class="form-signin" id="signin">

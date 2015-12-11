@@ -36,7 +36,7 @@
 		$sql = "SELECT itemText, email, pos, itemPriority FROM item WHERE listid = '".$row[1]."' ORDER BY pos";
 		$returned = mysql_query($sql, $conn);
 		while($itemRow = mysql_fetch_row($returned)){
-			echo "<p><a href='#' data-toggle='popover' title='Added By' data-trigger='hover' data-content='".$itemRow[1]." - Priority: ".$itemRow[3]."'>".$itemRow[0]."</a></p>";
+			echo "<p><a href='#' data-toggle='popover' title='Added By' data-content='".$itemRow[1]." - Priority: ".$itemRow[3]."'>".$itemRow[0]."</a></p>";
 		}
 		echo "<label for = 'addItemInputField'>Add Item</label>";
 		echo "<input type = 'text' class = 'form-control' id='".$row[1]."-input' placeholder='Item Name'></input>";

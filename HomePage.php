@@ -4,6 +4,7 @@
 	<title>Home Page</title>
 
 	<link href="HomePageStyle.css" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link href="navbar.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> <!-- jQuery 1.11 CDN -->
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script> <!-- Bootstrap JS CDN -->
@@ -97,14 +98,17 @@
 
 				var list = $(this).closest("div");
 				var listId = list.attr("id");
+				alert(listId);
 				
 
 				var inputName = listId + "-approve";
 				var userName = $("#"+inputName).val();
+				alert(userName);
 				
 
 				var name = $(this).closest("listbtn");
 				var listName = name.attr("id");
+				alert(listName);
 				
 
 				$.ajax({
@@ -152,6 +156,10 @@
     </script>
 </head>
 <body>
+
+<!-- IMPORTANT
+Portions of this code have been taken and modified from https://getbootstrap.com/examples/navbar/
+-->
 
 <div class="container">
 	<nav class="navbar navbar-default">
